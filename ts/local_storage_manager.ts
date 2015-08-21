@@ -1,4 +1,4 @@
-window.fakeStorage = {
+(<any>window).fakeStorage = {
   _data: {},
 
   setItem: function (id, val) {
@@ -23,7 +23,7 @@ function LocalStorageManager() {
   this.gameStateKey     = "gameState";
 
   var supported = this.localStorageSupported();
-  this.storage = supported ? window.localStorage : window.fakeStorage;
+  this.storage = supported ? window.localStorage : (<any>window).fakeStorage;
 }
 
 LocalStorageManager.prototype.localStorageSupported = function () {

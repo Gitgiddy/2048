@@ -1,5 +1,5 @@
 (function () {
-  if (typeof window.Element === "undefined" ||
+  if (typeof (<any>window).Element === "undefined" ||
       "classList" in document.documentElement) {
     return;
   }
@@ -53,7 +53,7 @@
     }
   };
 
-  window.DOMTokenList = DOMTokenList;
+  (<any>window).DOMTokenList = DOMTokenList;
 
   function defineElementGetter(obj, prop, getter) {
     if (Object.defineProperty) {

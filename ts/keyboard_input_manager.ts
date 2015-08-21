@@ -77,15 +77,15 @@ KeyboardInputManager.prototype.listen = function () {
   var touchStartClientX, touchStartClientY;
   var gameContainer = document.getElementsByClassName("game-container")[0];
 
-  gameContainer.addEventListener(this.eventTouchstart, function (event) {
+  gameContainer.addEventListener(this.eventTouchstart, function (event: TouchEvent) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
         event.targetTouches > 1) {
       return; // Ignore if touching with more than 1 finger
     }
 
     if (window.navigator.msPointerEnabled) {
-      touchStartClientX = event.pageX;
-      touchStartClientY = event.pageY;
+      touchStartClientX = (<any>event).pageX;
+      touchStartClientY = (<any>event).pageY;
     } else {
       touchStartClientX = event.touches[0].clientX;
       touchStartClientY = event.touches[0].clientY;
@@ -98,7 +98,7 @@ KeyboardInputManager.prototype.listen = function () {
     event.preventDefault();
   });
 
-  gameContainer.addEventListener(this.eventTouchend, function (event) {
+  gameContainer.addEventListener(this.eventTouchend, function (event: TouchEvent) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
         event.targetTouches > 0) {
       return; // Ignore if still touching with one or more fingers
@@ -107,8 +107,8 @@ KeyboardInputManager.prototype.listen = function () {
     var touchEndClientX, touchEndClientY;
 
     if (window.navigator.msPointerEnabled) {
-      touchEndClientX = event.pageX;
-      touchEndClientY = event.pageY;
+        touchEndClientX = (<any>event).pageX;
+        touchEndClientY = (<any>event).pageY;
     } else {
       touchEndClientX = event.changedTouches[0].clientX;
       touchEndClientY = event.changedTouches[0].clientY;
