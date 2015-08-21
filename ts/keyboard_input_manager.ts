@@ -78,8 +78,8 @@ KeyboardInputManager.prototype.listen = function () {
   var gameContainer = document.getElementsByClassName("game-container")[0];
 
   gameContainer.addEventListener(this.eventTouchstart, function (event: TouchEvent) {
-    if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
-        event.targetTouches > 1) {
+      if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
+          event.targetTouches.length > 1) {
       return; // Ignore if touching with more than 1 finger
     }
 
@@ -99,8 +99,8 @@ KeyboardInputManager.prototype.listen = function () {
   });
 
   gameContainer.addEventListener(this.eventTouchend, function (event: TouchEvent) {
-    if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
-        event.targetTouches > 0) {
+      if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
+          event.targetTouches.length > 0) {
       return; // Ignore if still touching with one or more fingers
     }
 
