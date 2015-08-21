@@ -1,6 +1,12 @@
+/// <reference path="keyboard_input_manager.ts" />
+
+// temporary and optional
+interface KeyboardInputManager {
+    on: (event: string, callback: () => void) => void;
+}
 
 class GameManager {
-    private inputManager: any;
+    private inputManager: KeyboardInputManager;
     private storageManager: any;
     private actuator: any;
     private startTiles: number;
@@ -12,7 +18,12 @@ class GameManager {
     private grid: any;
     private score: number;
 
-    constructor(private size, InputManager, Actuator, StorageManager) {
+    constructor(
+        private size,
+        InputManager: typeof KeyboardInputManager,
+        Actuator: typeof HTMLActuator,
+        StorageManager: typeof LocalStorageManager) {
+
         this.inputManager = new InputManager;
         this.storageManager = new StorageManager;
         this.actuator = new Actuator;
