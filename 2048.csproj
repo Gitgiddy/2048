@@ -78,16 +78,16 @@
     <Content Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="js\animframe_polyfill.js" />
-    <TypeScriptCompile Include="js\application.js" />
-    <TypeScriptCompile Include="js\bind_polyfill.js" />
-    <TypeScriptCompile Include="js\classlist_polyfill.js" />
-    <TypeScriptCompile Include="js\game_manager.js" />
-    <TypeScriptCompile Include="js\grid.js" />
-    <TypeScriptCompile Include="js\html_actuator.js" />
-    <TypeScriptCompile Include="js\keyboard_input_manager.js" />
-    <TypeScriptCompile Include="js\local_storage_manager.js" />
-    <TypeScriptCompile Include="js\tile.js" />
+    <TypeScriptCompile Include="ts\animframe_polyfill.ts" />
+    <TypeScriptCompile Include="ts\application.ts" />
+    <TypeScriptCompile Include="ts\bind_polyfill.ts" />
+    <TypeScriptCompile Include="ts\classlist_polyfill.ts" />
+    <TypeScriptCompile Include="ts\game_manager.ts" />
+    <TypeScriptCompile Include="ts\grid.ts" />
+    <TypeScriptCompile Include="ts\html_actuator.ts" />
+    <TypeScriptCompile Include="ts\keyboard_input_manager.ts" />
+    <TypeScriptCompile Include="ts\local_storage_manager.ts" />
+    <TypeScriptCompile Include="ts\tile.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -112,6 +112,34 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Any CPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir>js</TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Any CPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir>js</TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Target Name="Clean">
     <Delete Files="$(OutputPath)" />

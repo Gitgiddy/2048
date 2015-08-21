@@ -1,3 +1,5 @@
 .sass-cache/
 /bin
+/obj
 *.user
+js/**/*.*
