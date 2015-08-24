@@ -47,16 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="CONTRIBUTING.md" />
-    <Content Include="js\animframe_polyfill.js" />
-    <Content Include="js\application.js" />
-    <Content Include="js\bind_polyfill.js" />
-    <Content Include="js\classlist_polyfill.js" />
-    <Content Include="js\game_manager.js" />
-    <Content Include="js\grid.js" />
-    <Content Include="js\html_actuator.js" />
-    <Content Include="js\keyboard_input_manager.js" />
-    <Content Include="js\local_storage_manager.js" />
-    <Content Include="js\tile.js" />
+    <Content Include="js\app.js" />
     <Content Include="meta\apple-touch-icon.png" />
     <Content Include="meta\apple-touch-startup-image-640x1096.png" />
     <Content Include="meta\apple-touch-startup-image-640x920.png" />
@@ -88,10 +79,12 @@
     <Content Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="ts\animframe_polyfill.ts" />
+    <TypeScriptCompile Include="ts\polyfill\animframe_polyfill.ts" />
+    <TypeScriptCompile Include="ts\fake_storage.ts" />
+    <TypeScriptCompile Include="ts\misc.ts" />
     <TypeScriptCompile Include="ts\application.ts" />
-    <TypeScriptCompile Include="ts\bind_polyfill.ts" />
-    <TypeScriptCompile Include="ts\classlist_polyfill.ts" />
+    <TypeScriptCompile Include="ts\polyfill\bind_polyfill.ts" />
+    <TypeScriptCompile Include="ts\polyfill\classlist_polyfill.ts" />
     <TypeScriptCompile Include="ts\game_manager.ts" />
     <TypeScriptCompile Include="ts\grid.ts" />
     <TypeScriptCompile Include="ts\html_actuator.ts" />
@@ -102,6 +95,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
@@ -125,10 +119,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Any CPU'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
-    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
     <TypeScriptModuleKind>None</TypeScriptModuleKind>
     <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-    <TypeScriptOutFile />
+    <TypeScriptOutFile>js/app.js</TypeScriptOutFile>
     <TypeScriptOutDir>js</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
@@ -142,7 +136,7 @@
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
     <TypeScriptModuleKind>None</TypeScriptModuleKind>
     <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-    <TypeScriptOutFile />
+    <TypeScriptOutFile>js/app.js</TypeScriptOutFile>
     <TypeScriptOutDir>js</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
