@@ -3,18 +3,18 @@
 class GameManager {
     private inputManager: KeyboardInputManager;
     private storageManager: LocalStorageManager;
-    private actuator: any;
+    private actuator: HTMLActuator;
     private startTiles: number;
     
     // previously inexplicit state variables
     private _keepPlaying: boolean;
     private over: boolean;
     private won: boolean;
-    private grid: any;
+    private grid: Grid;
     private score: number;
 
     constructor(
-        private size,
+        private size : number,
         InputManager: typeof KeyboardInputManager,
         Actuator: typeof HTMLActuator,
         StorageManager: typeof LocalStorageManager) {
@@ -47,7 +47,7 @@ class GameManager {
 
     // Return true if the game is lost, or has won and the user hasn't kept playing
     private isGameTerminated() {
-        return this.over || (this.won && !this.keepPlaying);
+        return this.over || (this.won && !this._keepPlaying);
     };
 
     // Set up the game
@@ -118,13 +118,13 @@ class GameManager {
     };
 
     // Represent the current game as an object
-    private serialize() {
+    private serialize(): SerializedGame {
         return {
             grid: this.grid.serialize(),
             score: this.score,
             over: this.over,
             won: this.won,
-            keepPlaying: this.keepPlaying
+            keepPlaying: this._keepPlaying
         };
     };
 
@@ -150,7 +150,7 @@ class GameManager {
         // 0: up, 1: right, 2: down, 3: left
         if (this.isGameTerminated()) return; // Don't do anything if the game's over
 
-        var cell, tile;
+        var cell: TilePosition, tile : Tile;
 
         var vector = this.getVector(direction);
         var traversals = this.buildTraversals(vector);
@@ -285,4 +285,12 @@ class GameManager {
     private positionsEqual(first, second) {
         return first.x === second.x && first.y === second.y;
     };
+}
+
+interface SerializedGame {
+    grid: SerializedGrid;
+    score: number;
+    over: boolean;
+    won: boolean;
+    keepPlaying: boolean;
 }

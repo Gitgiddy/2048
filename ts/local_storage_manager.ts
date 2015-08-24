@@ -1,3 +1,23 @@
+class FakeStorage {
+    private _data: {};
+
+    setItem(id, val) {
+        return this._data[id] = String(val);
+    };
+
+    getItem(id) {
+        return this._data.hasOwnProperty(id) ? this._data[id] : undefined;
+    };
+
+    removeItem(id) {
+        return delete this._data[id];
+    };
+
+    clear() {
+        return this._data = {};
+    };
+};
+
 class LocalStorageManager {
     private static bestScoreKey = "bestScore";
     private static gameStateKey = "gameState";
@@ -39,12 +59,12 @@ class LocalStorageManager {
     };
 
     // Game state getters/setters and clearing
-    getGameState() {
+    getGameState(): SerializedGame {
         var stateJSON = this.storage.getItem(LocalStorageManager.gameStateKey);
         return stateJSON ? JSON.parse(stateJSON) : null;
     };
 
-    setGameState(gameState) {
+    setGameState(gameState: SerializedGame) {
         this.storage.setItem(LocalStorageManager.gameStateKey, JSON.stringify(gameState));
     };
 
@@ -52,23 +72,3 @@ class LocalStorageManager {
         this.storage.removeItem(LocalStorageManager.gameStateKey);
     };
 }
-
-class FakeStorage {
-    private _data: {};
-
-    setItem(id, val) {
-        return this._data[id] = String(val);
-    };
-
-    getItem(id) {
-        return this._data.hasOwnProperty(id) ? this._data[id] : undefined;
-    };
-
-    removeItem(id) {
-        return delete this._data[id];
-    };
-
-    clear() {
-        return this._data = {};
-    };
-};
