@@ -2,7 +2,7 @@
 
 class GameManager {
     private inputManager: KeyboardInputManager;
-    private storageManager: any;
+    private storageManager: LocalStorageManager;
     private actuator: any;
     private startTiles: number;
     
